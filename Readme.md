@@ -34,7 +34,10 @@ To run this project locally:
    ```
 
 2. **Navigate to the directory :**
-   ```cd Weather-App
 
    ```
+   cd Weather-App
+
+   ```
+
 3. **Open index.html and run :**
