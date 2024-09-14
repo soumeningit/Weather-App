@@ -60,6 +60,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     const error = document.querySelector(".errorImage");
+    const errorContainer = document.querySelector(".error-container");
 
     async function fetchUserWeatherInfo(coordinates) {
         const { lat, lon } = coordinates;
@@ -67,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
         grantlocationTab.classList.remove("active");
         try {
             const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}&units=metric`);
-            console.log("Response : " + response);
+            // console.log("Response : " + response);
             if (!response.ok) {
                 throw new Error('Internal server error'); // Throw error for internal server error
             }
@@ -75,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
             loaderImg.classList.remove("active");
             userInfoContainer.classList.add("active");
             renderData(data);
-            console.log(data);
+            // console.log(data);
         }
         catch (e) {
             console.log("Error fetching weather data:", e);
@@ -191,6 +192,12 @@ document.addEventListener("DOMContentLoaded", function () {
             loaderImg.classList.remove("active");
             searchFrom.classList.remove("active");
             error.classList.add("active");
+            errorContainer.classList.add("active");
         }
     }
+
+    const refreshBtn = document.querySelector(".refresh-button");
+    refreshBtn.addEventListener("click", () => {
+        window.location.reload();
+    })
 })
